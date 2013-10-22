@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>小雨滴MVP · 儿童版</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="../dist/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+</head>
+<body>
+
+<div class="container">
+    <%
+    var i;
+    for (i=0;i<cards.length;i++){
+        var card=cards[i];
+        if (i%3==0){
+    %>
+    <div class="row">
+        <%}
+        if (!card){%>
+        <div class="col-sm-6 col-md-4"></div>
+        <%}else{%>
+        <div class="col-sm-6 col-md-4">
+            <div class="thumbnail">
+                <img data-src="E:\实习\Web端\droplingsServer\droplings\public\mvp\resource\image\<%=card.image%>" alt="">
+                <div class="caption">
+                    <h3><%=card.name%></h3>
+            <%if(card.type=="category"){%>
+                    <p><a href="<%=card.id%>" class="btn btn-primary" role="button">进入</a></p>
+            <%}else{%>
+                    <br><br>
+            <%}%>
+                </div>
+            </div>
+        </div>
+        <%}
+          if(i%3==2){%>
+    </div>
+        <%}%>
+    <%}%>
+</div>
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="../dist/js/bootstrap.min.js"></script>
+</body>
+</html>

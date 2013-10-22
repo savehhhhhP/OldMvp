@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>修正的幼儿自闭症检查表（M-CHAT）在线测试</title>
+    <link rel='stylesheet' href='stylesheets/style.css' />
+    <link rel='stylesheet' href='stylesheets/card.css'/>
+    <link rel="stylesheet" type="text/css" href="stylesheets/prequestions.css" />
+    <link href="skin/square/red.css" rel="stylesheet">
+    <link rel="stylesheet" href="Buttons/css/font-awesome.min.css">
+    <link rel="stylesheet" href="Buttons/css/buttons.css">
+
+    <script type="text/javascript" src="javascripts/jquery.js"></script>
+    <script src="javascripts/libs/jspdf.js"></script>
+    <script src="javascripts/libs/Blob.js/BlobBuilder.js"></script>
+    <script src="javascripts/libs/FileSaver.js/FileSaver.js"></script>
+    <script src="javascripts/jquery.icheck.js"></script>
+</head>
+<script>
+    $(document).ready(function(){
+        $('input').iCheck({
+            checkboxClass: 'icheckbox_square-red',
+            radioClass: 'iradio_square-red',
+            increaseArea: '200%'
+        });
+        document.getElementById("relationtext").disabled=true;
+
+        $("input.selectrelation").on('ifChecked', function(event){
+            document.getElementById("relationtext").disabled=true;
+        });
+
+        $("input.fillrelation").on('ifChecked', function(event){
+            document.getElementById("relationtext").disabled=false;
+        });
+    });
+
+    function ansSubmit(){
+        document.getElementById("surveyForm").submit()
+    }
+
+</script>
+<body>
+<div class="card">
+    <div class="bar">
+        修正的幼儿自闭症检查表（M-CHAT）
+    </div>
+    <div class="bluenotes">
+        请按照孩子平常的状况回答下列问题。如果那种行为很少出现（例如：你看过一、两次），请以孩子没有做过来作答。
+    </div>
+
+    <form id="surveyForm" method="post">
+    <div class="cardbody" style="-moz-user-select:-moz-none;" onselectstart="return false;">
+        <div class="minorhint">
+            请在开始测试之前，先帮助填写几个关于你和你孩子的问题。
+            <br>
+            填写这些资料能帮助我们更好地完善幼儿自闭症筛查量表这项服务，这部分填写也与筛查结果无关。
+        </div>
+        <div class="surveyitem">
+            <div class="surveyquestion">
+                <strong>1. 孩子的性别是？</strong>
+            </div>
+            <div class="option">
+                <div class="label">男孩</div>
+                <div class="radiobtn">
+                    <input type="radio" name="gender" value="male"/>
+                </div>
+            </div>
+            <div class="option">
+                <div class="label">女孩</div>
+                <div class="radiobtn">
+                    <input type="radio" name="gender" value="female"/>
+                </div>
+            </div>
+        </div>
+        <div class="surveyitem">
+            <div class="surveyquestion">
+                <strong>2. 你与孩子的关系是？</strong>
+            </div>
+            <div class="option">
+                <div class="label">父母</div>
+                <div class="radiobtn">
+                    <input class="selectrelation" type="radio" name="relation" value="父母"/>
+                </div>
+            </div>
+            <div class="option">
+                <div class="label">亲戚</div>
+                <div class="radiobtn">
+                    <input class="selectrelation" type="radio" name="relation" value="亲戚"/>
+                </div>
+            </div>
+            <div class="option">
+                <div class="label">老师</div>
+                <div class="radiobtn">
+                    <input class="selectrelation" type="radio" name="relation" value="老师"/>
+                </div>
+            </div>
+            <div class="option">
+                <div class="label">其他</div>
+                <div class="radiobtn">
+                    <input class="fillrelation" type="radio" name="relation" value="其他"/>
+                </div>
+                <div class="inputtext">
+                    <input id="relationtext" type="text" name="otherrelation" placeholder="请注明" />
+                </div>
+            </div>
+        </div>
+        <div class="surveyitem">
+            <div class="surveyquestion">
+                <strong>3. 孩子的年龄是？</strong>
+            </div>
+            <div class="option">
+                <div class="label">16个月以下</div>
+                <div class="radiobtn">
+                    <input type="radio" name="age" value="<16"/>
+                </div>
+            </div>
+            <div class="option">
+                <div class="label">16个月~30个月</div>
+                <div class="radiobtn">
+                    <input type="radio" name="age" value="16to30"/>
+                </div>
+            </div>
+            <div class="option">
+                <div class="label">30个月以上</div>
+                <div class="radiobtn">
+                    <input type="radio" name="age" value=">30"/>
+                </div>
+            </div>
+        </div>
+        <div class="buttonpart">
+            <div class="skipbtn">
+                <a class="minora" onclick="ansSubmit()">跳过此步骤 >></a>
+            </div>
+            <div class="nextbtn">
+                <a href="#" class="button button-pill button-flat-action" onclick="ansSubmit()">下一步
+                    <i class="icon-arrow-right"></i></a>
+            </div>
+        </div>
+    </div>
+    </form>
+
+</div>
+<div class="cardbottom">
+</div>
+
+<%- partial('footer') %>
+
+</body>
+</html>

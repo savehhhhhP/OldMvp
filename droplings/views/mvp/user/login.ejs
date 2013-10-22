@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>小雨滴MVP · 登录</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="../dist/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+</head>
+<body>
+
+<div class="container">
+    <% if (error) { %>
+        <div class="alert alert-danger">
+            <%= error %>
+        </div>
+    <% } %>
+    <div class="col-md-6">
+        <form class="form-signin" method="post">
+            <h2 class="form-signin-heading">登录</h2>
+            <input type="text" class="form-control" name="username" placeholder="用户名" autofocus>
+            <input type="password" class="form-control" name="password" placeholder="密码">
+            <br>
+            <div class="row">
+                <div class="col-md-6">
+                    <button class="btn btn-lg btn-primary btn-block " type="submit">登录</button>
+                </div>
+                <div class="col-md-6">
+                    <a href="register" class="btn btn-default btn-lg btn-block" role="button">注册</a>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="../dist/js/bootstrap.min.js"></script>
+</body>
+</html>

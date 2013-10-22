@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>量表数据 · M-CHAT</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/services/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+</head>
+<body>
+<div class="container">
+    <div class="page-header">
+        <h1>量表数据 <small>M-CHAT</small></h1>
+    </div>
+    <p>
+        总数据：<%=datacount%>条
+    </p>
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>userid</th>
+                <th>relation</th>
+                <th>age</th>
+                <th>gender</th>
+                <th>answer</th>
+                <th>terminal</th>
+            </tr>
+        </thead>
+        <tbody>
+        <%  var i,j;
+        for(i=0;i<data.length;i++){
+        var record=data[i];%>
+            <tr>
+                <td><%=(i+1)%></td>
+                <td><%=record.userid%></td>
+                <td><%=record.relation%></td>
+                <td><%=record.age%></td>
+                <td><%=record.gender%></td>
+                <td>
+                <%for(j=1;j<=23;j++){%>
+                    <%=record["question"+j]%>
+                <%}%>
+                </td>
+                <td><%=record.terminal%></td>
+            </tr>
+        <%}%>
+        </tbody>
+    </table>
+    <div class="pagination">
+        <ul>
+        <%if (currentPage==1){%>
+            <li class="disabled"><a href="#">&laquo;</a></li>
+        <%}else{%>
+            <li><a href="?page=<%=currentPage-1%>">&laquo;</a></li>
+        <%}%>
+        <%for(i=1;i<=totalPage;i++){%>
+            <%if (i==currentPage){%>
+            <li class="active"><a href="?page=<%=i%>"><%=i%></a></li>
+            <%}else{%>
+            <li><a href="?page=<%=i%>"><%=i%></a></li>
+            <%}%>
+        <%}%>
+        <%if (currentPage==totalPage){%>
+            <li class="disabled"><a href="#">&raquo;</a></li>
+        <%}else{%>
+            <li><a href="?page=<%=currentPage+1%>">&raquo;</a></li>
+        <%}%>
+        </ul>
+    </div>
+</div>
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+</body>
+</html>

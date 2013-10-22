@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>小雨滴MVP · 家长版</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="../dist/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+</head>
+<body>
+
+<div class="container">
+    <h2>替换</h2>
+    <form method="post">
+        <%- partial('mvp/parents/cardselect',{cards:cards}) %>
+        <br>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">替换</button>
+    </form>
+</div>
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="../dist/js/bootstrap.min.js"></script>
+</body>
+</html>

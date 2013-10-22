@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="measure/javascripts/libs/Downloadify/js/swfobject.js"></script>
+    <script src="measure/javascripts/libs/Downloadify/js/downloadify.min.js"></script>
+</head>
+<body>
+    <p id="downloadify">
+        <object type="application/x-shockwave-flash" id="downloadify_1376724481143" name="downloadify_1376724481143"
+                data="measure/javascripts/libs/Downloadify/media/downloadify.swf" width="100" height="30"
+                style="visibility: visible;">
+            <param name="allowScriptAccess" value="always">
+            <param name="wmode" value="transparent">
+            <param name="flashvars" value="queue_name=downloadify_1376724481143&amp;width=100&amp;height=30&amp;downloadImage=measure/javascripts/libs/Downloadify/images/download.png">
+        </object>
+    </p>
+
+<script type="text/javascript">
+    Downloadify.create('downloadify',{
+            filename: "hamster.txt",
+            data: "nono!",
+            onComplete: function(){ alert('Your File Has Been Saved!'); },
+            onCancel: function(){ alert('You have cancelled the saving of this file.'); },
+            onError: function(){ alert('You must put something in the File Contents or there will be nothing to save!'); },
+            swf: 'measure/javascripts/libs/Downloadify/media/downloadify.swf',
+            downloadImage: 'measure/javascripts/libs/Downloadify/images/download.png',
+            width: 100,
+            height: 30,
+            transparent: true,
+            append: false
+        });
+</script>
+</body>
+</html>

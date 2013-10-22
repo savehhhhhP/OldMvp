@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+    <title>修正的幼儿自闭症检查表（M-CHAT）在线测试</title>
+    <link href="skin/square/red.css" rel="stylesheet">
+    <link rel="stylesheet" href='stylesheets/style.css'>
+    <link rel='stylesheet' href='stylesheets/card.css'/>
+    <link rel="stylesheet" type="text/css" href="stylesheets/mchat.css" />
+    <link rel="stylesheet" href="Buttons/css/font-awesome.min.css">
+    <link rel="stylesheet" href="Buttons/css/buttons.css">
+
+    <script type="text/javascript" src="javascripts/jquery.js"></script>
+    <script src="javascripts/libs/uuid.js"></script>
+    <script src="javascripts/data/mchatquestions.js"></script>
+    <script src="javascripts/jquery.icheck.js"></script>
+</head>
+<body>
+
+<div class="card" style="-moz-user-select:-moz-none;"  onselectstart="return false;">
+    <div class="bar">
+        修正的幼儿自闭症检查表（M-CHAT）
+    </div>
+
+    <div class="questionpart">
+        <div id="qid">1</div>
+        <div class="question">
+            <div id="qcontent"></div>
+            <div class="option">
+                <div class="label">是</div>
+                <div class="radiobtn">
+                    <input type="radio" name="ans" value=true/>
+                </div>
+            </div>
+
+            <div class="option">
+                <div class="label">否</div>
+                <div class="radiobtn">
+                    <input type="radio" name="ans" value=false/>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="buttonpart">
+        <div class="prevbtn">
+            <a class="minora" onclick="prevQuestion()"><< 上一题</a>
+        </div>
+        <div class="nextbtn">
+            <button class="button button-pill button-flat-action" id="next"
+                onclick="nextQuestion()">下一步
+                <i class="icon-arrow-right"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="scroll">
+        <div id="scrollfg">
+        </div>
+        <div id="scrollbg">
+        </div>
+    </div>
+</div>
+<div class="cardbottom">
+
+</div>
+
+<input type="hidden" id="relation" value=<%=relation%>>
+<input type="hidden" id="age" value=<%=age%>>
+<input type="hidden" id="gender" value=<%=gender%>>
+<script src="javascripts/mchat.js"></script>
+
+<%- partial('footer') %>
+</body>
+</html>

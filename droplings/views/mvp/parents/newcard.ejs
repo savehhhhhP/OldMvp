@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>小雨滴MVP · 家长版</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../dist/css/bootstrap.min.css" rel="stylesheet" media="screen">
+    <link href="../dist/css/bootstrap-theme.min.css" rel="stylesheet" media="screen">
+</head>
+<body>
+
+<div class="container">
+    <% if (error) { %>
+        <div class="alert alert-danger">
+            <%= error %>
+        </div>
+    <% } %>
+    <% if (success) { %>
+        <div class="alert alert-success">
+            <%= success %>
+        </div>
+    <% } %>
+    <h2>新建卡片</h2>
+    <form method="post" ENCTYPE="multipart/form-data">
+        <input type="text" class="form-control" name="name" placeholder="显示文字" autofocus>
+        <label class="radio-inline">
+            <input type="radio" name="type" value="card" checked>卡片　
+        </label>
+        <label class="radio-inline">
+            <input type="radio" name="type" value="category">分类　
+        </label>
+        <br>
+        <label for="imagefile">配图：</label>
+        <input id="imagefile" name="imagefile" type="file"><br>
+        <label for="audiofile">发音：</label>
+        <input id="audiofile" name="audiofile" type="file"><br>
+        <div class="row">
+            <div class="col-md-6">
+                <button class="btn btn-lg btn-primary btn-block" type="submit">新建卡片/分类</button>
+            </div>
+            <div class="col-md-6">
+                <a href="index" class="btn btn-default btn-lg btn-block" role="button">返回</a>
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<script src="../dist/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>修正的幼儿自闭症检查表（M-CHAT）在线测试</title>
+    <link rel='stylesheet' href='stylesheets/style.css' />
+    <link rel='stylesheet' href='stylesheets/card.css'/>
+    <link rel="stylesheet" type="text/css" href="stylesheets/result.css" />
+    <link href="skin/square/red.css" rel="stylesheet">
+    <link rel="stylesheet" href="Buttons/css/font-awesome.min.css">
+    <link rel="stylesheet" href="Buttons/css/buttons.css">
+
+    <script src="javascripts/jquery.js"></script>
+    <script src="javascripts/libs/jspdf/jspdf.js"></script>
+    <script src="javascripts/libs/jspdf/jspdf.plugin.addimage.js"></script>
+    <script src="javascripts/libs/Downloadify/swfobject.js"></script>
+    <script src="javascripts/libs/Downloadify/downloadify.min.js"></script>
+    <script src="javascripts/libs/Blob.js/BlobBuilder.js"></script>
+    <script src="javascripts/libs/FileSaver.js/FileSaver.js"></script>
+    <script src="javascripts/jquery.icheck.js"></script>
+</head>
+<body>
+<div class="card">
+    <div class="bar">
+        修正的幼儿自闭症检查表（M-CHAT）
+    </div>
+    <div class="bluenotes">
+        <strong>筛查结果:</strong>
+        <br><br>
+        <%if (result==true){%>
+        孩子有较高的可能患有自闭症或其他发育障碍疾病，请向医生咨询以获得进一步评估。
+        <%}else{%>
+        孩子的行为发展处于正常发育的预期范围内。如果您对孩子是否患有自闭症或其他发育迟缓疾病始终保持担忧，请向医生咨询以获得进一步
+        评估。
+        <%}%>
+        <br><br>
+        M-CHAT是一种自闭症筛查量表，并不能筛查出其他发育问题。并且因为筛查量表很难做到准确筛查，
+        如果您<%if (result==false){%>仍<%}%>担心孩子在发育或行为方面存在问题，请您与医生及时取得联络。
+    </div>
+    <div class="cardbody">
+        <table>
+            <tr>
+                <th></th>
+                <th>问题</th>
+                <th>是</th>
+                <th>否</th>
+            </tr>
+            <%
+            var i;
+            for(i=0;i<questions.length;i++){
+            %>
+            <tr>
+                <input type="hidden" id="ans<%=i%>" value=<%=answer["question"+(i+1)]%>>
+                <td class="id"><%=(i+1)%></td>
+                <td class="text"><%=questions[i].text%></td>
+                <td align=center class="yes">
+                    <%if(answer["question"+(i+1)]==1){%>
+                    <div class="radiobtn">
+                        <input type="radio" disabled="disabled" checked=true/>
+                    </div>
+                    <%}%>
+                </td>
+                <td align=center class="no">
+                    <%if(answer["question"+(i+1)]!=1){%>
+                    <div class="radiobtn">
+                        <input type="radio" disabled="disabled" checked=true/>
+                    </div>
+                    <%}%>
+                </td>
+            </tr>
+            <%}%>
+        </table>
+    </div>
+    <script src="javascripts/data/pdfimagedata.js"></script>
+    <div class="btngroup">
+        <div class="firstbtn">
+            <a href="/measure/mchat" class="button button-pill button-flat" id="redobtn">&nbsp;　<i class="icon-repeat"></i>&nbsp;重新测试&nbsp;　</a>
+        </div>
+        <div class="otherbtn">
+            <button class="button button-pill button-flat-primary" onclick="printPage()" id="printbtn">&nbsp;　<i class="icon-print"></i>&nbsp;打印结果&nbsp;　</button>
+        </div>
+        <div class="otherbtn">
+            <button class="button button-pill button-flat-action" onclick="generatePDF()" id="pdfbtn"><i class="icon-download"></i>&nbsp;下载结果(PDF)</button>
+        </div>
+    </div>
+    <script src="javascripts/result.js"></script>
+</div>
+<div class="cardbottom">
+</div>
+<input type="hidden" value=<%=result%> id="result">
+
+<%- partial('footer') %>
+</body>
+</html>
