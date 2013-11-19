@@ -7,7 +7,6 @@ var CardTree = require("../models/cardTree.js");
 var uuid = require('../libs/uuid.js');
 
 module.exports = function (app) {
-
 	//mvp
 	//user
 	app.get('/mvp/user/login',function(req,res){
@@ -22,7 +21,7 @@ module.exports = function (app) {
 			if (!user) {
 				req.flash('error', '用户 \''+req.body.username+'\' 不存在。');
 				res.redirect('/mvp/user/login');
-				return;
+                return;
 			}
 			if (user.password != password) {
 				req.flash('error', '用户名或密码错误。');
@@ -67,7 +66,7 @@ module.exports = function (app) {
 		User.get(newUser.name, function (err, user) {
 			if (user)
 				err = '用户名已经存在。';
-			if (err) {
+			if (err) {   //err为true 说明不存在  可以创建用户名
 				req.flash('error', err);
 				res.redirect('/mvp/user/register');
 				return;

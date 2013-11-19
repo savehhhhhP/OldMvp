@@ -28,7 +28,6 @@ CardTree.prototype.save = function  save(callback) {
 				callback(err, cardtree);
 			});
 		});
-
 	});
 };
 

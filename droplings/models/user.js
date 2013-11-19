@@ -15,27 +15,28 @@ User.prototype.save = function  save(callback) {
 		uuid: this.uuid
     };
     mongodb.open(function (err, db) {
-        if (err) {
-            return  callback(err);
-        }
-        // 读取 users 集合
-        db.collection('mvpusers', function (err, collection) {
             if (err) {
-                mongodb.close();
                 return  callback(err);
             }
-            // 为 name 属性添加索引
-            collection.ensureIndex('name', {unique:  true},function (err, inserted) {});
-            // 写入 user  文档
-            collection.insert(user, {safe: true},  function (err, user) {
-                mongodb.close();
-                callback(err, user);
+            // 读取 users 集合
+            db.collection('mvpusers', function (err, collection) {
+                if (err) {
+                    mongodb.close();
+                    return  callback(err);
+                }
+                // 为 name 属性添加索引
+                collection.ensureIndex('name', {unique:  true},function (err, inserted) {});
+                // 写入 user  文档
+                collection.insert(user, {safe: true},  function (err, user) {
+                    mongodb.close();
+                    callback(err, user);
+                });
             });
-        });
 
     });
 };
 
+//从数据库中找出所有name做用户名的查重操作
 User.get =  function  get(username, callback) {
     mongodb.open(function(err, db) {
         if (err) {
